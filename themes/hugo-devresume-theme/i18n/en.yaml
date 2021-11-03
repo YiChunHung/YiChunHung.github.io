@@ -1,0 +1,24 @@
+- id: awards
+  translation: Awards
+- id: education
+  translation: Education
+- id: experiences
+  translation: Experiences 
+- id: information
+  translation: Information
+- id: interests
+  translation: Interests
+- id: languages
+  translation: Languages
+- id: projects
+  translation: Projects
+- id: skills
+  translation: Skills
+- id: selectedprojs
+  translation: Seleted Interdisciplinary Projects
+- id: workexpr
+  translation: Work Experience
+- id: publications
+  translation: Publications
+- id: researches
+  translation: Researches
