@@ -1,0 +1,21 @@
+<header class="site-header">
+  <nav class="navbar shell" aria-label="Primary navigation">
+    <a class="navbar__brand" href="{{ site.Home.RelPermalink }}">Yi-Chun Hung</a>
+
+    <button class="navbar__toggle" type="button" aria-expanded="false" aria-controls="primary-menu">
+      <span class="sr-only">Toggle navigation</span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+      <span aria-hidden="true"></span>
+    </button>
+
+    <ul class="navbar__menu" id="primary-menu">
+      {{ range site.Menus.main }}
+        {{ $active := or ($.IsMenuCurrent "main" .) ($.HasMenuCurrent "main" .) }}
+        <li>
+          <a href="{{ .URL }}"{{ if $active }} class="is-active" aria-current="page"{{ end }}>{{ .Name }}</a>
+        </li>
+      {{ end }}
+    </ul>
+  </nav>
+</header>

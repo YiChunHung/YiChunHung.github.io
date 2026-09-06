@@ -1,0 +1,73 @@
+{{ define "main" }}
+  <header class="page-heading">
+    <p class="eyebrow">Education, talks, service &amp; honors</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  </header>
+
+  <section class="content-section" aria-labelledby="education-heading">
+    <h2 id="education-heading">Education</h2>
+    <div class="education-list">
+      {{ range .Params.education }}
+        <article class="education-item">
+          <div>
+            <h3>{{ .degree }}</h3>
+            <p>{{ .institution }}{{ with .location }} · {{ . }}{{ end }}</p>
+            {{ with .gpa }}<p>GPA: {{ . }}</p>{{ end }}
+          </div>
+          {{ with .date }}<p class="entry__date">{{ . }}</p>{{ end }}
+        </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="content-section" aria-labelledby="talks-heading">
+    <h2 id="talks-heading">Talks &amp; Presentations</h2>
+    <div class="experience-list">
+      {{ range .Params.talks }}
+        <article class="experience-item">
+          <div class="experience-item__heading">
+            <div>
+              <h3>{{ .title }}</h3>
+              <p class="experience-item__context">{{ .event }}{{ with .location }} · {{ . }}{{ end }}</p>
+            </div>
+            <div class="experience-item__meta">
+              {{ with .date }}<p class="entry__date">{{ . }}</p>{{ end }}
+              {{ with .type }}<span class="experience-item__type">{{ . }}</span>{{ end }}
+            </div>
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="content-section" aria-labelledby="service-heading">
+    <h2 id="service-heading">Academic Service</h2>
+    <div class="experience-list">
+      {{ range .Params.academic_service }}
+        <article class="experience-item">
+          <h3>{{ .role }}</h3>
+          <p class="experience-item__description">{{ delimit .venues " · " }}</p>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+
+  <section class="content-section" aria-labelledby="awards-heading">
+    <h2 id="awards-heading">Awards</h2>
+    <div class="experience-list">
+      {{ range .Params.awards }}
+        <article class="experience-item">
+          <div class="experience-item__heading">
+            <div>
+              <h3>{{ .title }}</h3>
+              {{ with .description }}<p class="experience-item__description">{{ . }}</p>{{ end }}
+            </div>
+            {{ with .date }}<p class="entry__date">{{ . }}</p>{{ end }}
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  </section>
+
+{{ end }}

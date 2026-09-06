@@ -1,0 +1,42 @@
+{{ define "main" }}
+  <header class="page-heading page-heading--publications">
+    <p class="eyebrow">Journals, conferences, preprints &amp; patents</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  </header>
+
+  {{ $items := sort .Params.publications "year" "desc" }}
+  {{ $years := slice }}
+  {{ range $items }}
+    {{ $years = $years | append .year }}
+  {{ end }}
+
+  <section class="publication-list" aria-label="Publication list">
+    {{ range (uniq $years) }}
+      {{ $year := . }}
+      <section class="publication-year" aria-labelledby="year-{{ $year }}">
+        <h2 class="year-heading" id="year-{{ $year }}"><span>{{ $year }}</span></h2>
+        {{ range where $items "year" $year }}
+          {{ $publicationID := .id | default .key }}
+          {{ $categoryClass := lower .category }}
+          <article class="publication"{{ with $publicationID }} id="publication-{{ . | anchorize }}"{{ end }}>
+            <div class="publication__meta">
+              {{ with .key }}<span class="publication__key publication__key--{{ $categoryClass }}">{{ . }}</span>{{ end }}
+              <span class="publication__type">{{ .category }}</span>
+              {{ with .note }}<span class="publication__note">{{ . }}</span>{{ end }}
+            </div>
+            <h3>{{ .title }}</h3>
+            {{ $authors := .authors | htmlEscape }}
+            <p class="publication__authors">{{ replace $authors "Y.-C. Hung" "<strong>Y.-C. Hung</strong>" | safeHTML }}</p>
+            <p class="publication__venue">{{ .venue }}</p>
+            {{ with .links }}
+              <p class="publication__links">
+                {{ range . }}<a href="{{ .url }}" target="_blank" rel="noreferrer">[{{ .label }}]</a>{{ end }}
+              </p>
+            {{ end }}
+          </article>
+        {{ end }}
+      </section>
+    {{ end }}
+  </section>
+{{ end }}

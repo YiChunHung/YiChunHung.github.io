@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="{{ site.Language.LanguageCode | default "en" }}">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <meta name="theme-color" content="#bdc5de">
+    <meta name="author" content="{{ site.Params.author }}">
+    <meta name="description" content="{{ .Description | default site.Params.description }}">
+    <title>{{ if .IsHome }}{{ site.Title }}{{ else }}{{ .Title }} · {{ site.Title }}{{ end }}</title>
+
+    <link rel="icon" href="{{ "favicon.svg" | relURL }}" type="image/svg+xml">
+    {{ $styles := resources.Get "css/main.css" | minify | fingerprint }}
+    <link rel="stylesheet" href="{{ $styles.RelPermalink }}" integrity="{{ $styles.Data.Integrity }}">
+  </head>
+  <body class="{{ if .IsHome }}home-page{{ else }}inner-page{{ end }}">
+    <a class="skip-link" href="#main-content">Skip to content</a>
+    {{ partial "navbar.html" . }}
+
+    <main class="site-main" id="main-content">
+      <article class="page-card{{ if .IsHome }} page-card--home{{ end }}">
+        {{ block "main" . }}{{ end }}
+      </article>
+    </main>
+
+    {{ partial "footer.html" . }}
+    {{ $script := resources.Get "js/main.js" | minify | fingerprint }}
+    <script src="{{ $script.RelPermalink }}" integrity="{{ $script.Data.Integrity }}" defer></script>
+  </body>
+</html>

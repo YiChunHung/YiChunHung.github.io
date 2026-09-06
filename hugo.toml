@@ -1,0 +1,38 @@
+baseURL = "https://yichunhung.github.io/"
+languageCode = "en-us"
+title = "Yi-Chun Hung"
+enableRobotsTXT = true
+disableKinds = ["taxonomy", "term", "rss"]
+
+[params]
+  author = "Yi-Chun Hung"
+  description = "Yi-Chun Hung is a PhD candidate at Northwestern University working on NeuroAI, machine learning, computational imaging, and inverse problems."
+
+[[menus.main]]
+  name = "Home"
+  pageRef = "/"
+  weight = 10
+
+[[menus.main]]
+  name = "Research"
+  pageRef = "/research"
+  weight = 20
+
+[[menus.main]]
+  name = "Publications"
+  pageRef = "/publications"
+  weight = 30
+
+[[menus.main]]
+  name = "Experience"
+  pageRef = "/experience"
+  weight = 40
+
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = false
+
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'

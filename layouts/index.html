@@ -1,0 +1,52 @@
+{{ define "main" }}
+  <section class="profile" aria-labelledby="profile-name">
+    <div class="profile__portrait-wrap">
+      {{ $avatar := resources.Get .Params.profile.image }}
+      {{ if $avatar }}
+        {{ $avatar = $avatar.Fill "640x640 Center q85" }}
+        <img class="profile__portrait" src="{{ $avatar.RelPermalink }}" width="320" height="320" alt="Portrait of {{ .Params.profile.name }}">
+      {{ end }}
+    </div>
+
+    <div class="profile__details">
+      <p class="eyebrow">{{ .Params.profile.tagline }}</p>
+      <h1 id="profile-name">{{ .Params.profile.name }}</h1>
+      <p class="profile__role">{{ .Params.profile.role }}</p>
+      <p class="profile__affiliation">{{ .Params.profile.affiliation }}</p>
+      <p class="profile__location">{{ .Params.profile.location }}</p>
+      <p class="profile__email">Email: <a href="mailto:{{ .Params.profile.email }}">{{ .Params.profile.email }}</a></p>
+
+      <div class="profile__links" aria-label="Contact and profile links">
+        {{ range .Params.profile.links }}
+          <a href="{{ .url }}"{{ if or (hasPrefix .url "https://") (hasPrefix .url "http://") }} target="_blank" rel="noreferrer"{{ end }}>[{{ .label }}]</a>
+        {{ end }}
+      </div>
+    </div>
+  </section>
+
+  <section class="home-intro content-section" aria-labelledby="about-heading">
+    <h2 id="about-heading">Hello!</h2>
+    {{ range .Params.bio }}
+      <p>{{ . | markdownify }}</p>
+    {{ end }}
+  </section>
+
+  {{ with .Params.news }}
+    <section class="content-section" aria-labelledby="news-heading">
+      <h2 id="news-heading">News</h2>
+      <div class="news-list" tabindex="0" aria-label="Recent news">
+        {{ range . }}
+          <article class="news-item">
+            <span class="news-item__mark" aria-hidden="true">✓</span>
+            <p>
+              {{ if .featured }}<span class="badge">New</span>{{ end }}
+              <time>{{ .date }}</time>
+              <span aria-hidden="true">·</span>
+              {{ .text | markdownify }}
+            </p>
+          </article>
+        {{ end }}
+      </div>
+    </section>
+  {{ end }}
+{{ end }}

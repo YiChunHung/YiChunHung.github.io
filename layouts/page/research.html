@@ -1,0 +1,30 @@
+{{ define "main" }}
+  <header class="page-heading">
+    <p class="eyebrow">NeuroAI, Machine Learning &amp; Computational Imaging</p>
+    <h1>{{ .Title }}</h1>
+    {{ with .Description }}<p>{{ . }}</p>{{ end }}
+  </header>
+
+  <section class="content-section" aria-label="Research experience">
+    <div class="entry-list">
+      {{ range .Params.experience }}
+        <article class="entry">
+          <header class="entry__heading">
+            <div>
+              <h3>{{ .title }}</h3>
+              <p class="entry__organization">
+                {{ .organization }}{{ with .location }} · {{ . }}{{ end }}
+              </p>
+            </div>
+            <p class="entry__date">{{ .period }}</p>
+          </header>
+          {{ with .highlights }}
+            <ul>
+              {{ range . }}<li>{{ . | markdownify }}</li>{{ end }}
+            </ul>
+          {{ end }}
+        </article>
+      {{ end }}
+    </div>
+  </section>
+{{ end }}
