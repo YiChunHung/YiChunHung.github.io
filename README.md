@@ -1,6 +1,6 @@
 # Yi-Chun Hung — Academic Website
 
-This is a custom Hugo site for GitHub Pages. Its four page-content files are deliberately separated from the shared HTML and CSS templates.
+This is a custom Hugo site for GitHub Pages. Its four page-content files are deliberately separated from the shared HTML and CSS templates. Local and GitHub Pages builds use Hugo 0.129.0.
 
 ## Edit content
 
