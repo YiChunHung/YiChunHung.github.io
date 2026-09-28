@@ -21,9 +21,11 @@ bio:
 news:
   - date: "2026"
     featured: true
-    text: "Completed a NeuroAI internship at Cold Spring Harbor Laboratory."
+    text: "Precision-Aware Hopfield Retrieval: Unifying Population Codes and Memory Retrieval with Information Optimization was accepted to NeurIPS 2026."
   - date: "2026"
     featured: true
+    text: "Completed a NeuroAI internship at Cold Spring Harbor Laboratory."
+  - date: "2026"
     text: "Attended the Cold Spring Harbor Laboratory \"Computational Neuroscience: Vision\" Summer School."
   - date: "2026"
     text: "Spectrum from Defocus: Fast Spectral Imaging with Chromatic Focal Stack was accepted to CVPR 2026 as an oral presentation. [Project website](https://nubivlab.github.io/spectrum_from_defocus/)"

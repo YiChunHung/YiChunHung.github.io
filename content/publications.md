@@ -3,6 +3,14 @@ title: "Publications"
 layout: "publications"
 description: "Journal, conference, preprint and patent publications."
 publications:
+  - id: "hung2026precision"
+    key: "C15"
+    year: 2026
+    category: "Conference"
+    title: "Precision-Aware Hopfield Retrieval: Unifying Population Codes and Memory Retrieval with Information Optimization"
+    authors: "Y.-C. Hung, D. Wu, H.-Y. Chen, H. Liu, E. Alexander"
+    venue: "Accepted to NeurIPS 2026"
+
   - id: "hung2025homeostatic"
     key: "C12"
     year: 2026
